@@ -1,0 +1,32 @@
+@import "./variables.css";
+
+body {
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+}
+
+section {
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-md);
+}
+
+h1 {
+  font-size: var(--font-size-xxl);
+}
+h2 {
+  font-size: var(--font-size-xl);
+}
+h3 {
+  font-size: var(--font-size-l);
+}
+h4 {
+  font-size: var(--font-size-m);
+}
+h5 {
+  font-size: var(--font-size-s);
+}
+h6 {
+  font-size: var(--font-size-xs);
+}
+
+/* Classes */
