@@ -1,20 +1,60 @@
-/* eslint-disable no-debugger */
+import React, { useEffect, useState } from "react";
+import { fetchFormSchema } from "./services/SchemeService";
+import { SchemeFormFieldModal } from "./modals/types/SchemeTypes";
+import { useForm, Controller } from "react-hook-form";
+import SchemeFormField from "./components/SchemeField/SchemeField";
 import "./styles/global.css";
 import "./styles/variables.css";
-import { fetchFormSchema } from "./services/SchemeService";
 
 const baseUrl = import.meta.env.VITE_API_URL;
 
-async function App() {
-  const dynamicForm = await fetchFormSchema(baseUrl);
+const App: React.FC = () => {
+  const [dynamicForm, setDynamicForm] = useState<SchemeFormFieldModal[]>([]);
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  console.log(dynamicForm);
-  debugger;
+  useEffect(() => {
+    const loadFormSchema = async () => {
+      const formSchema = await fetchFormSchema(baseUrl);
+      setDynamicForm(formSchema.fields);
+    };
+
+    loadFormSchema();
+  }, []);
+
+  const onSubmit = (data: unknown) => {
+    console.log("Form Data:", data);
+  };
+
   return (
     <>
-      <h1>hello</h1>
+      <h1>Form Submission</h1>
+
+      <form onSubmit={handleSubmit(onSubmit)}>
+        {dynamicForm.map((field, index) => (
+          <Controller
+            key={index}
+            name={`field_${index}`}
+            control={control}
+            defaultValue=""
+            render={({ field: { onChange, value } }) => (
+              <SchemeFormField
+                field={field}
+                fieldIndex={index}
+                value={value}
+                onChange={onChange}
+                errors={errors}
+              />
+            )}
+          />
+        ))}
+        <button type="submit">Submit</button>
+      </form>
     </>
   );
-}
+};
 
 export default App;

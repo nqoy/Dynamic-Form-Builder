@@ -25,4 +25,14 @@
   --border-radius-m: clamp(6px, 0.75vw, 12px);
   --border-radius-l: clamp(8px, 1vw, 16px);
   --border-radius-xl: clamp(12px, 1.25vw, 24px);
+
+  /* Colors */
+  --primary-color: #007bff;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --error-color: #dc3545;
+  --info-color: #17a2b8;
+  --text-color: #212529;
+  --border-color: #ccc;
+  --background-color: #f8f9fa;
 }

@@ -1,0 +1,60 @@
+@import "../../styles/variables.css";
+
+.scheme-field {
+  margin-bottom: var(--spacing-m);
+}
+
+.scheme-field-label {
+  font-size: var(--font-size-m);
+  display: block;
+  margin-bottom: var(--spacing-s);
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.scheme-field-required-mark {
+  color: var(--error-color);
+  margin-left: var(--spacing-xs);
+}
+
+.scheme-field-input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.scheme-field-control {
+  width: 100%;
+  padding: var(--spacing-s);
+  font-size: var(--font-size-m);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-s);
+  transition: border-color 0.3s ease;
+}
+
+.scheme-field--error {
+  border-color: var(--error-color);
+}
+
+.scheme-field--focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.scheme-field--success {
+  border-color: var(--success-color);
+}
+
+.scheme-field--warning {
+  border-color: var(--warning-color);
+}
+
+.scheme-field--info {
+  border-color: var(--info-color);
+}
+
+.scheme-field-error {
+  color: var(--error-color);
+  font-size: var(--font-size-xs);
+  margin-top: var(--spacing-xs);
+}
