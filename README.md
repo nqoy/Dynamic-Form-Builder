@@ -1,54 +1,115 @@
-# React + TypeScript + Vite
+# Dynamic Form Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive form-rendering application that dynamically generates forms based on JSON schema definitions. Built with React, TypeScript, and React Hook Form.
 
-Currently, two official plugins are available:
+## Overview
+![image](https://github.com/user-attachments/assets/9a0e8401-f486-4870-886a-e667a4c750e6)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This application fetches a JSON schema from an API endpoint and renders a customizable form with real-time validation. It's built using:
 
-## Expanding the ESLint configuration
+- React with TypeScript
+- Vite as the build tool
+- React Hook Form for form management
+- Vanilla CSS for styling
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Features
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- 🔄 **Dynamic Form Generation**: Renders forms based on a JSON schema
+- ✅ **Real-Time Validation**: Validates inputs as the user types
+- 📱 **Responsive Design**: Works on all screen sizes
+- 🧩 **Multiple Input Types**: Supports text inputs, textareas, number inputs, select dropdowns, and more
+- 🚦 **Validation Rules**: Implements required fields, min/max values, and regex patterns
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/dynamic-form-builder.git
+   cd dynamic-form-builder
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+## How It Works
+
+1. The application fetches a JSON schema from the configured endpoint
+2. It parses the schema and dynamically generates form fields
+3. As users interact with the form, real-time validation occurs based on the schema rules
+4. The submit button remains disabled until all validations pass
+5. Upon submission, the form data is displayed in a formatted view
+
+## JSON Schema Structure
+
+The form is generated based on a JSON schema with the following structure:
+
+```json
+[
+  {
+    "title": "Section Title",
+    "fields": [
+      {
+        "type": "<input_type>",
+        "label": "Field Label",
+        "rules": {
+          "required": {
+            "value": <boolean>,
+            "error_message": "Error message"
+          },
+          "min": {
+            "value": <number>,
+            "error_message": "Min length message with {{value}}"
+          },
+          "max": {
+            "value": <number>,
+            "error_message": "Max length message with {{value}}"
+          },
+          "regex": {
+            "value": <regex_pattern>,
+            "error_message": "Regex validation message"
+          }
+        }
+      },
+      // Additional fields...
+    ]
+  }
+]
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Supported Field Types
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- `input`: Text input field
+- `input_number`: Numeric input field
+- `textarea`: Multi-line text input
+- `select`: Dropdown selection (requires an `options` array)
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+### Validation Rules
+
+- `required`: Makes the field mandatory
+- `min`: Minimum length for text or minimum value for numbers
+- `max`: Maximum length for text or maximum value for numbers
+- `regex`: Regular expression pattern validation
+
+## Configuration
+
+To configure the schema endpoint URL, modify the `.env` file:
+
+```
+VITE_SCHEMA_ENDPOINT=https://your-api-endpoint.com/schema
 ```
