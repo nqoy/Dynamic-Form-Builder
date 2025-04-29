@@ -9,7 +9,6 @@ import "./SchemeField.css";
 
 interface SchemeFieldProps {
   field: SchemeFormFieldModal;
-  fieldIndex: number;
   value: string;
   onChange: (
     e: React.ChangeEvent<
@@ -21,12 +20,11 @@ interface SchemeFieldProps {
 
 const SchemeFormField: React.FC<SchemeFieldProps> = ({
   field,
-  fieldIndex,
   value,
   onChange,
   errors,
 }) => {
-  const fieldName = `field_${fieldIndex}`;
+  const fieldName = field.label;
   const hasError = !!errors?.[fieldName];
   const errorMessage = errors?.[fieldName]?.message as string | undefined;
 
