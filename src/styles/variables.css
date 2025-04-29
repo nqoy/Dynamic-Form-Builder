@@ -21,10 +21,10 @@
   --font-size-xxl: clamp(1.75rem, 4vw, 3rem);
 
   /* Border radius */
-  --border-radius-s: clamp(4px, 0.5vw, 8px);
-  --border-radius-m: clamp(6px, 0.75vw, 12px);
-  --border-radius-l: clamp(8px, 1vw, 16px);
-  --border-radius-xl: clamp(12px, 1.25vw, 24px);
+  --border-radius-s: 8px;
+  --border-radius-m: 12px;
+  --border-radius-l: 18px;
+  --border-radius-xl: 25px;
 
   /* Colors */
   --primary-color: #007bff;

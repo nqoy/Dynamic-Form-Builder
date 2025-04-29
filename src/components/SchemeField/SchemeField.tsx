@@ -106,21 +106,20 @@ const SchemeFormField: React.FC<SchemeFieldProps> = ({
   return (
     <div className="scheme-field">
       <label htmlFor={fieldName} className="scheme-field-label">
-        {field.label}
-        {field.rules?.required?.value && (
-          <span className="scheme-field-required-mark">*</span>
+        <span className="label-text">
+          {field.label}
+          {field.rules?.required?.value && (
+            <span className="scheme-field-required-mark">*</span>
+          )}
+        </span>
+        {hasError && (
+          <span className="scheme-field-inline-error">
+            {errorMessage || "Invalid input"}
+          </span>
         )}
       </label>
 
-      <div className="scheme-field-input">
-        {renderField()}
-
-        {hasError && (
-          <div className="scheme-field-error">
-            {errorMessage || "Invalid input"}
-          </div>
-        )}
-      </div>
+      <div className="scheme-field-input">{renderField()}</div>
     </div>
   );
 };

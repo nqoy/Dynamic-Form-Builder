@@ -1,7 +1,9 @@
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
+import { useState } from "react";
 import { DynamicForm } from "../../modals/DynamicForm";
 import { SchemeFormFieldModal } from "../../modals/types/SchemeTypes";
 import SchemeFormField from "../SchemeField/SchemeField";
+import SubmissionModal from "../SubmissionModal/SubmissionModal";
 import "./SchemeForm.css";
 
 interface SchemeFormProps {
@@ -12,6 +14,8 @@ const SchemeForm: React.FC<SchemeFormProps> = ({ formSchema }) => {
   const fields = formSchema.fields;
   const validationRules = formSchema.getValidationRules();
   const defaultValues: Record<string, unknown> = {};
+
+  const [submittedData, setSubmittedData] = useState<Record<string, unknown> | null>(null);
 
   for (const field of fields) {
     defaultValues[field.label] = "";
@@ -27,7 +31,11 @@ const SchemeForm: React.FC<SchemeFormProps> = ({ formSchema }) => {
   });
 
   const onSubmit: SubmitHandler<Record<string, unknown>> = (data) => {
-    console.log(data);
+    setSubmittedData(data);
+  };
+
+  const closeModal = () => {
+    setSubmittedData(null);
   };
 
   return (
@@ -63,6 +71,10 @@ const SchemeForm: React.FC<SchemeFormProps> = ({ formSchema }) => {
           </button>
         </div>
       </form>
+
+      {submittedData && (
+        <SubmissionModal data={submittedData} onClose={closeModal} />
+      )}
     </div>
   );
 };

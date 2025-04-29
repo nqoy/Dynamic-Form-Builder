@@ -6,15 +6,30 @@
 
 .scheme-field-label {
   font-size: var(--font-size-m);
-  display: block;
-  margin-bottom: var(--spacing-s);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-xs);
   font-weight: bold;
   color: var(--text-color);
 }
 
+.label-text {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
 .scheme-field-required-mark {
   color: var(--error-color);
-  margin-left: var(--spacing-xs);
+}
+
+.scheme-field-inline-error {
+  color: var(--error-color);
+  font-size: var(--font-size-xs);
+  margin-left: var(--spacing-s);
+  font-weight: normal;
+  white-space: nowrap;
 }
 
 .scheme-field-input {
@@ -26,11 +41,19 @@
 }
 
 .scheme-field-control {
-  padding: var(--spacing-s);
-  font-size: var(--font-size-m);
+  padding: var(--spacing-xs);
+  font-size: var(--font-size-s);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-s);
   transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+textarea.scheme-field-control {
+  min-height: 100px;
+  padding: var(--spacing-xs);
+  box-sizing: border-box;
+  resize: none;
 }
 
 .scheme-field--error {
@@ -52,12 +75,4 @@
 
 .scheme-field--info {
   border-color: var(--info-color);
-}
-
-.scheme-field-error {
-  position: absolute;
-  bottom: -2rem;
-  color: var(--error-color);
-  font-size: var(--font-size-xs);
-  margin-top: var(--spacing-xs);
 }

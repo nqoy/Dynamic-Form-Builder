@@ -61,7 +61,7 @@
 }
 
 .scheme-form-field label {
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-s);
   color: var(--text-color);
 }
 
