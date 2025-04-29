@@ -21,6 +21,10 @@ section {
   padding: var(--spacing-m);
 }
 
+select {
+  min-width: -webkit-fill-available;
+}
+
 h1 {
   font-size: var(--font-size-xxl);
 }
