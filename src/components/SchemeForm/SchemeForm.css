@@ -40,12 +40,16 @@
 }
 
 .scheme-submit-button:disabled {
-  background-color: #ccc;
+  background-color: #d3d3d3;
   cursor: not-allowed;
 }
 
-.scheme-submit-button:hover {
-  background-color: #0056b3;
+.scheme-submit-button:enabled:hover {
+  background-color: #4caf50;
+}
+
+.scheme-submit-button:disabled:hover {
+  background-color: #d3d3d3;
 }
 
 .scheme-form-actions {

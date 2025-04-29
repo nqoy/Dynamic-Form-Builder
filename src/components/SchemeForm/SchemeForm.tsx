@@ -1,4 +1,3 @@
-import React from "react";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { DynamicForm } from "../../modals/DynamicForm";
 import { SchemeFormFieldModal } from "../../modals/types/SchemeTypes";
@@ -12,8 +11,8 @@ interface SchemeFormProps {
 const SchemeForm: React.FC<SchemeFormProps> = ({ formSchema }) => {
   const fields = formSchema.fields;
   const validationRules = formSchema.getValidationRules();
-
   const defaultValues: Record<string, unknown> = {};
+
   for (const field of fields) {
     defaultValues[field.label] = "";
   }

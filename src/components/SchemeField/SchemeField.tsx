@@ -114,7 +114,12 @@ const SchemeFormField: React.FC<SchemeFieldProps> = ({
 
       <div className="scheme-field-input">
         {renderField()}
-        {hasError && <div className="scheme-field-error">{errorMessage}</div>}
+
+        {hasError && (
+          <div className="scheme-field-error">
+            {errorMessage || "Invalid input"}
+          </div>
+        )}
       </div>
     </div>
   );

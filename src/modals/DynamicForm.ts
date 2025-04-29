@@ -13,8 +13,8 @@ export class DynamicForm {
   getValidationRules(): Record<string, RegisterOptions> {
     const rules: Record<string, RegisterOptions> = {};
 
-    this.fields.forEach((field, index) => {
-      const fieldName = `field_${index}`;
+    this.fields.forEach((field) => {
+      const fieldName = field.label;
       const fieldRules: RegisterOptions = {};
 
       if (field.rules?.required?.value) {
