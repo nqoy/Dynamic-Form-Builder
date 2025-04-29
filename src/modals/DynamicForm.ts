@@ -1,4 +1,8 @@
-import { SchemeFormFieldModal, FormScheme } from "./types/SchemeTypes";
+import {
+  SchemeFormFieldModal,
+  FormScheme,
+  SchemeFieldType,
+} from "./types/SchemeTypes";
 import { RegisterOptions } from "react-hook-form";
 
 export class DynamicForm {
@@ -23,7 +27,7 @@ export class DynamicForm {
       }
 
       if (typeof field.rules?.min?.value === "number") {
-        if (field.type === "input_number") {
+        if (field.type === SchemeFieldType.INPUT_NUMBER) {
           fieldRules.min = {
             value: field.rules.min.value,
             message:
@@ -45,7 +49,7 @@ export class DynamicForm {
       }
 
       if (typeof field.rules?.max?.value === "number") {
-        if (field.type === "input_number") {
+        if (field.type === SchemeFieldType.INPUT_NUMBER) {
           fieldRules.max = {
             value: field.rules.max.value,
             message:

@@ -1,7 +1,7 @@
 export enum SchemeFieldType {
   INPUT = "input",
-  TEXTAREA = "textarea",
   SELECT = "select",
+  TEXTAREA = "textarea",
   INPUT_NUMBER = "input_number",
 }
 
