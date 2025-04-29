@@ -1,7 +1,7 @@
 @import "../../styles/variables.css";
 
 .scheme-field {
-  margin-bottom: var(--spacing-m);
+  margin-bottom: var(--spacing-s);
 }
 
 .scheme-field-label {
