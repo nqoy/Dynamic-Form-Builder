@@ -1,12 +1,12 @@
 @import "../../styles/variables.css";
 
 .scheme-form-container {
-  padding: var(--spacing-l);
-  width: 100%;
-  max-width: var(--container-m);
+  padding: var(--spacing-xl);
+  width: var(--container-xl);
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 2rem;
 }
 
 .scheme-form-title {

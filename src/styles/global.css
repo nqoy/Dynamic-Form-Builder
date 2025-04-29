@@ -1,6 +1,7 @@
 @import "./variables.css";
 
 body {
+  background-image: url("/background.png");
   font-family: var(--font-family);
   color: var(--text-color);
   display: flex;
@@ -22,6 +23,9 @@ section {
 }
 
 select {
+  min-width: -webkit-fill-available;
+}
+input{
   min-width: -webkit-fill-available;
 }
 
@@ -52,7 +56,6 @@ h6 {
     rgba(255, 255, 255, 0.1) /* Transparent background */
   );
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
