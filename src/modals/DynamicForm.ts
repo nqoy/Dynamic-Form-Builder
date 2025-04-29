@@ -23,25 +23,47 @@ export class DynamicForm {
       }
 
       if (typeof field.rules?.min?.value === "number") {
-        fieldRules.minLength = {
-          value: field.rules.min.value,
-          message:
-            field.rules.min.error_message?.replace(
-              "{{value}}",
-              field.rules.min.value.toString()
-            ) || `Minimum length is ${field.rules.min.value}`,
-        };
+        if (field.type === "input_number") {
+          fieldRules.min = {
+            value: field.rules.min.value,
+            message:
+              field.rules.min.error_message?.replace(
+                "{{value}}",
+                field.rules.min.value.toString()
+              ) || `Minimum value is ${field.rules.min.value}`,
+          };
+        } else {
+          fieldRules.minLength = {
+            value: field.rules.min.value,
+            message:
+              field.rules.min.error_message?.replace(
+                "{{value}}",
+                field.rules.min.value.toString()
+              ) || `Minimum length is ${field.rules.min.value}`,
+          };
+        }
       }
 
       if (typeof field.rules?.max?.value === "number") {
-        fieldRules.maxLength = {
-          value: field.rules.max.value,
-          message:
-            field.rules.max.error_message?.replace(
-              "{{value}}",
-              field.rules.max.value.toString()
-            ) || `Maximum length is ${field.rules.max.value}`,
-        };
+        if (field.type === "input_number") {
+          fieldRules.max = {
+            value: field.rules.max.value,
+            message:
+              field.rules.max.error_message?.replace(
+                "{{value}}",
+                field.rules.max.value.toString()
+              ) || `Maximum value is ${field.rules.max.value}`,
+          };
+        } else {
+          fieldRules.maxLength = {
+            value: field.rules.max.value,
+            message:
+              field.rules.max.error_message?.replace(
+                "{{value}}",
+                field.rules.max.value.toString()
+              ) || `Maximum length is ${field.rules.max.value}`,
+          };
+        }
       }
 
       if (typeof field.rules?.regex?.value === "string") {
