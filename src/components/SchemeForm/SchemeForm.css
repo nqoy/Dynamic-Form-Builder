@@ -41,7 +41,7 @@
 }
 
 .scheme-submit-button:disabled {
-  background-color: #d3d3d3;
+  background-color: #bdbdbd;
   cursor: not-allowed;
 }
 
@@ -50,7 +50,7 @@
 }
 
 .scheme-submit-button:disabled:hover {
-  background-color: #d3d3d3;
+  background-color: #bdbdbd;
 }
 
 .scheme-form-actions {

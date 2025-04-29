@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import {
   SchemeFormFieldModal,
-  SchemeFieldType,
-  SchemeFormFieldOption,
 } from "../../modals/types/SchemeTypes";
 import { FieldErrors } from "react-hook-form";
 import "./SchemeField.css";
+import SchemeFieldRenderer  from "./SchemeFieldRenderer";
 
 interface SchemeFieldProps {
   field: SchemeFormFieldModal;
@@ -39,70 +38,6 @@ const SchemeFormField: React.FC<SchemeFieldProps> = ({
     return classNames;
   };
 
-  const renderField = () => {
-    switch (field.type) {
-      case SchemeFieldType.INPUT:
-        return (
-          <input
-            id={fieldName}
-            className={getFieldClassNames()}
-            value={value}
-            onChange={onChange}
-            onFocus={() => setIsFocused(true)}
-            onBlur={() => setIsFocused(false)}
-          />
-        );
-
-      case SchemeFieldType.TEXTAREA:
-        return (
-          <textarea
-            id={fieldName}
-            className={getFieldClassNames()}
-            value={value}
-            onChange={onChange}
-            onFocus={() => setIsFocused(true)}
-            onBlur={() => setIsFocused(false)}
-          />
-        );
-
-      case SchemeFieldType.SELECT:
-        return (
-          <select
-            id={fieldName}
-            className={getFieldClassNames()}
-            value={value}
-            onChange={onChange}
-            onFocus={() => setIsFocused(true)}
-            onBlur={() => setIsFocused(false)}
-          >
-            <option value="">Select {field.label}</option>
-            {Array.isArray(field.options) &&
-              field.options.map((option: SchemeFormFieldOption, index) => (
-                <option key={index} value={option.value}>
-                  {option.key}
-                </option>
-              ))}
-          </select>
-        );
-
-      case SchemeFieldType.INPUT_NUMBER:
-        return (
-          <input
-            id={fieldName}
-            type="number"
-            className={getFieldClassNames()}
-            value={value}
-            onChange={onChange}
-            onFocus={() => setIsFocused(true)}
-            onBlur={() => setIsFocused(false)}
-          />
-        );
-
-      default:
-        return null;
-    }
-  };
-
   return (
     <div className="scheme-field">
       <label htmlFor={fieldName} className="scheme-field-label">
@@ -119,7 +54,17 @@ const SchemeFormField: React.FC<SchemeFieldProps> = ({
         )}
       </label>
 
-      <div className="scheme-field-input">{renderField()}</div>
+      <div className="scheme-field-input">
+        <SchemeFieldRenderer 
+          field={field}
+          fieldName={fieldName}
+          value={value}
+          className={getFieldClassNames()}
+          onChange={onChange}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+        />
+      </div>
     </div>
   );
 };
